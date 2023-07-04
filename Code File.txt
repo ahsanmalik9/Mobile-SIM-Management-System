@@ -1,0 +1,828 @@
+#include<iostream>
+#include<conio.h>
+#include<fstream>
+#include<string>
+using namespace std;
+int cmp_count = 0;
+int pack_count1 = 0;
+int pack_count2 = 0;
+int pack_count3 = 0;
+int sim_count = 0;
+
+class complain {
+private:
+	string name;
+	string ph_no;
+	string cnic;
+public:
+	complain() {}
+	void getcompinfo(); 
+	void getcomplain();
+	void get_comp(); 
+	void write_complain(); 
+};
+class Packages {
+public:
+	string name;
+	string ph_no;
+public:
+	void getpackage();
+    void write_packages();
+	void write_file();
+
+};
+class User {
+private:
+	string name;
+	string f_name;
+	string cnic;
+	string address;
+public:
+	void details();
+	void getsim();
+	void write_sim();
+	
+	
+}; class Admin {
+private:
+	string user;
+	string pass;
+	Packages pr;
+	complain ds;
+	User U;
+public:
+	void get();
+		int chk(string , string );
+		void get_sim();
+		void get_package();
+		void get_complain();
+		void get_comp_info();
+
+}; void welcome();
+
+int main() {
+	welcome();
+	_getch();
+
+t:int q; system("cls");
+	cout << "Select From The Following." << endl;
+	cout << "1.Admin" << endl;
+	cout << "2.user" << endl;
+	cout << "3.Exit" << endl;
+	cin >> q;
+	switch (q) {
+	case 1: {
+		v:system("cls");
+		cout << "*****ADMIN*****";
+		Admin ad;
+		string a, b;
+		ad.get();
+		ifstream infile;
+		infile.open("log in");
+		infile >> a;
+		cout << endl;
+		infile >> b;
+		cout << endl;
+		int g;
+		g = ad.chk(a, b);
+		if (g == 1) {
+		i:	int a; system("cls");
+			cout << "\t\t\tWELCOME ADMIN.\n";
+			cout << "Choose from the following.\n";
+			cout << "1.Sim Info\n2.Complains \n3.Packages\n4.change Username/Password \n";
+			cout << "5.Back\n6.Exit\n";
+			cin >> a;
+			switch (a) {
+			case 1: {
+				system("cls");
+				cout << "*****Sim Info*****\n";
+				cout << "Sim sold : " << sim_count<<endl;
+
+				if (sim_count != 0) {
+					cout << "\nFollowing User bought your Sim\n\n";
+					ad.get_sim();
+
+				x:
+					cout << "\npress 1 to go back\n";
+					int e;
+					cin >> e;
+					if (e == 1) {
+						goto i;
+					}
+					else {
+						cout << "invalid input\n";
+						goto x;
+
+					}
+
+				}
+				else {
+				xx:
+					cout << "press 1 to go back\n";
+					int e;
+					cin >> e;
+					if (e == 1) {
+						goto i;
+					}
+					else {
+						cout << "invalid input\n";
+						goto xx;
+
+					}
+
+				}
+			}
+			case 2: {
+				system("cls"); 
+				cout << "*****Complains*****\n";
+				cout << "Complains recived : " << cmp_count << endl;
+				if (cmp_count!= 0){
+					cout << "\nYou recived a complain from\n\n";
+					ad.get_comp_info();
+					cout << "\n\n The complain is==>  ";
+					ad.get_complain();
+				pp:
+					cout << "\npress 1 to go back\n";
+					int e;
+					cin >> e;
+					if (e == 1) {
+						goto i;
+					}
+					else {
+						cout << "invalid input\n";
+						goto pp;
+
+					}
+
+				}
+				else {
+				p:
+					cout << "press 1 to go back\n";
+					int e;
+					cin >> e;
+					if (e == 1) {
+						goto i;
+					}
+					else {
+						cout << "invalid input\n";
+						goto p;
+
+					}
+
+				}
+			}
+			case 3: {y:system("cls");
+				cout << "\n*****Packages*****\n";
+				cout << "1.Student bundel Package\n";
+				cout << "2.full gup Package\n";
+				cout << "3.perfect Package\n";
+				cout << "4.Back\n";
+				cout << "5.Exit\n";
+				int hg;
+				cin >> hg;
+				switch(hg) {
+				case 1:
+				{
+					cout << "Package subscribed: " << pack_count1 << endl;
+					if (pack_count1 != 0) {
+						cout << "\nFollowing User Subscribed to (Student bundel Package)\n\n";
+						ad.get_package();
+						
+					pep:
+						cout << "\npress 1 to go back\n";
+						int e;
+						cin >> e;
+						if (e == 1) {
+							goto y;
+						}
+						else {
+							cout << "invalid input\n";
+							goto pep;
+
+						}
+
+					}
+					else {
+					op:
+						cout << "press 1 to go back\n";
+						int e;
+						cin >> e;
+						if (e == 1) {
+							goto y;
+						}
+						else {
+							cout << "invalid input\n";
+							goto op;
+
+						}
+
+					}
+				}
+				case 2:
+				{
+					cout << "Package subscribed: " << pack_count2 << endl;
+					if (pack_count2 != 0) {
+						cout << "\nFollowing User Subscribed to (full gup Package)\n\n";
+						ad.get_package();
+
+					ppp:
+						cout << "\npress 1 to go back\n";
+						int e;
+						cin >> e;
+						if (e == 1) {
+							goto y;
+						}
+						else {
+							cout << "invalid input\n";
+							goto ppp;
+
+						}
+
+					}
+					else {
+					oop:
+						cout << "press 1 to go back\n";
+						int e;
+						cin >> e;
+						if (e == 1) {
+							goto y;
+						}
+						else {
+							cout << "invalid input\n";
+							goto oop;
+
+						}
+
+					}}
+				case 3:
+				{
+					cout << "Package subscribed: " << pack_count3 << endl;
+					if (pack_count3 != 0) {
+						cout << "\nFollowing User Subscribed to (perfect Package)\n\n";
+						ad.get_package();
+
+					pop:
+						cout << "\npress 1 to go back\n";
+						int e;
+						cin >> e;
+						if (e == 1) {
+							goto y;
+						}
+						else {
+							cout << "invalid input\n";
+							goto pop;
+
+						}
+
+					}
+					else {
+					po:
+						cout << "press 1 to go back\n";
+						int e;
+						cin >> e;
+						if (e == 1) {
+							goto y;
+						}
+						else {
+							cout << "invalid input\n";
+							goto po;
+
+						}
+
+					}
+				}
+				case 4:
+				{goto i; }
+				case 5:
+				{return 0; }
+
+				}
+			}
+			case 4: {string k, j; int kl;
+			d:system("cls");
+				cout << "\n*****change login settings*****\n";
+				cout << "Enter Previous Username/password\n";
+				cout << "Username : ";
+				cin >> k;
+				cout << "Password : ";
+				cin >> j;
+				kl=ad.chk(k, j);
+				if (kl == 1) {
+					string vc, cv;
+					cout << "Enter New Username/password\n";
+					cout << "Username : ";
+					getline(cin, vc);
+					getline(cin, vc);
+					cout << "Password : ";
+					getline(cin, cv);
+					ofstream outfile;
+					outfile.open("log in");
+					outfile << vc <<endl;
+					outfile << cv << endl;
+					cout << "You have succesfully changed your Login settings\n";
+				e:
+					cout << "press 1 to go back\n";
+					int e;
+					cin >> e;
+					if (e == 1) {
+						goto i;
+					}
+					else {
+						cout << "invalid input\n";
+						goto e;
+
+					}
+
+				}
+				else {
+					char u;
+					
+					cout << "\nDo you want to try Again(y/n).";
+					cin >> u;
+					if (u == 'y') {
+						goto d;
+					}
+					else {
+						goto i;
+					}
+
+				}
+
+				
+				
+				
+
+			}
+			case 5: 
+			{
+				goto t; 
+			}
+			case 6: {
+				return 0; 
+			}
+					
+
+			}
+
+		}
+		else {
+			char u;
+			cout << "\nDo you want to try Again(y/n).";
+			cin >> u;
+			if (u == 'y') {
+				goto v;
+			}
+			else {
+				goto t;
+			}
+
+		}
+
+
+		break;
+	}
+	case 2: {a:
+	system("cls");
+	int w;
+	cout << "Welcome to User Manuel For Mobile Sim Network.\nHow we can help you " << endl;
+	cout << "1.New sim" << endl;
+	cout << "2.Complains" << endl;
+	cout << "3.Packages" << endl;
+	cout << "4.Back" << endl;
+	cout << "5.Exit" << endl;
+	cin >> w;
+	switch (w) {
+	case 1: {
+		system("cls");
+		cout << "Please Enter Your Details.\n";
+		User a;
+		a.details();
+		a.write_sim();
+		sim_count++;
+
+
+		cout << "\n\ncongrates you got your new sim\n";
+		cout << "your Mobile Number is XXXXXXXXXXX\n";
+	b:
+		cout << "press 1 to go back\n";
+		int e;
+		cin >> e;
+		if (e == 1) {
+			goto a;
+		}
+		else {
+			cout << "invalid input\n";
+			goto b;
+
+		}
+
+
+
+
+
+	}
+	case 2: {r:system("cls");
+	cout << "\n*****Complains*****\n";
+	int e;
+	cout << "Please Select From the following.\n";
+	cout << "1.Signal Issue\n";
+	cout << "2.Balance Lost\n";
+	cout << "3.Data Lost\n";
+	cout << "4.Back\n";
+	cout << "5.Exit\n";
+	cin >> e;
+	switch (e) {
+	case 1: {system("cls");
+		cout << "\n*****Signal Issue*****\n\n";
+		complain b;
+		cout << "Please Enter Your Details.\n";
+		b.get_comp();
+		b.write_complain();
+		cmp_count++;
+		cout << "\nYour Complain has been Registerd.\n";
+		cout << "\nWe will try to solve your Complain.\n";
+	c:
+		cout << "press 1 to go back\n";
+		int e;
+		cin >> e;
+		if (e == 1) {
+			goto r;
+		}
+		else {
+			cout << "invalid input\n";
+			goto c;
+
+		}
+
+
+		break;
+	}
+	case 2: {
+		system("cls"); 
+		cout << "\n*****Balance Lost*****\n\n";
+		complain x;
+		cout << "Please Enter Your Details.\n";
+		x.get_comp();
+		x.write_complain();
+		cmp_count++;
+		cout << "\nYour Complain has been Registerd.\n";
+		cout << "\nWe will try to solve your Complain.\n";
+	cc:
+		cout << "press 1 to go back\n";
+		int e;
+		cin >> e;
+		if (e == 1) {
+			goto r;
+		}
+		else {
+			cout << "invalid input\n";
+			goto cc;
+
+		}
+
+
+		break;
+	}
+	case 3: {system("cls");
+		cout << "\n***** Data Lost*****\n\n";
+		complain c;
+		cout << "Please Enter Your Details.\n";
+		c.get_comp();
+		c.write_complain();
+		cmp_count++;
+		cout << "\nYour Complain has been Registerd.\n";
+		cout << "\nWe will try to solve your Complain.\n";
+	bb:
+		cout << "press 1 to go back\n";
+		int e;
+		cin >> e;
+		if (e == 1) {
+			goto r;
+		}
+		else {
+			cout << "invalid input\n";
+			goto bb;
+
+		}
+
+
+		break;
+	}
+	case 4: {
+		goto a;
+		break;
+	}
+	case 5: {
+
+		break;
+	}
+	default:
+		goto r;
+
+	}
+
+
+	break;
+	}
+	case 3: {//packages
+	l:system("cls");
+		cout << "\n*****Packages*****\n\n";
+		cout << "1.Student bundel Package\n";
+		cout << "2.full gup Package\n";
+		cout << "3.perfect Package\n";
+		cout << "4.Back\n";
+		cout << "5.Exit\n";
+		int o;
+		cin >> o;
+		switch (o) {
+		case 1: {system("cls");
+			cout << "\n500 on net minutes\n500 SMS\n1 GB Internet Data\nValidity 3days\n Rs 100\n";
+			cout << "Do you want to subscribe to this package(y/n)\n";
+			char y;
+			cin >> y;
+			if (y == 'y') {
+				Packages p1;
+				p1.write_packages();
+				p1.write_file();
+				pack_count1++;
+				cout << "\ncongratulations you have subscribed to(Student bundel Package)\n";
+			m:
+				cout << "\npress 1 to go back\n";
+				int e;
+				cin >> e;
+				if (e == 1) {
+					goto l;
+				}
+				else {
+					cout << "invalid input\n";
+					goto m;
+
+				}
+
+
+
+
+			}
+			else {
+				goto l;
+			}
+
+		}case 2: {system("cls");
+			cout << "\nUnlimited on&off net minutes\n100 SMS\nValidity  1 day\nRs 30\n";
+			cout << "Do you want to subscribe to this package(y/n)\n";
+			char y;
+			cin >> y;
+			if (y == 'y') {
+				Packages p1;
+				p1.write_packages();
+				p1.write_file();
+				pack_count2++;
+				cout << "\ncongratulations you have subscribed to(Full Gup Package)\n";
+			mn:
+				cout << "\npress 1 to go back\n";
+				int e;
+				cin >> e;
+				if (e == 1) {
+					goto l;
+				}
+				else {
+					cout << "invalid input\n";
+					goto mn;
+
+				}
+
+
+
+
+			}
+			else {
+				goto l;
+			}
+
+		}case 3: {system("cls");
+			cout << "\n1000 on net minutes\n1000 SMS\n5 GB Internet Data\nValidity 1 week\nRs 500\n";
+		cout << "Do you want to subscribe to this package(y/n)\n";
+		char y;
+		cin >> y;
+		if (y == 'y') {
+			Packages p1;
+			p1.write_packages();
+			p1.write_file();
+			pack_count3++;
+			cout << "\ncongratulations you have subscribed to(Perfect Package)\n";
+		n:
+			cout << "\npress 1 to go back\n";
+			int e;
+			cin >> e;
+			if (e == 1) {
+				goto l;
+			}
+			else {
+				cout << "invalid input\n";
+				goto n;
+
+			}
+
+
+
+
+		}
+		else {
+			goto l;
+		}
+
+
+		}
+		case 4: {
+			goto a;
+		}
+		case 5: {
+			return 0;
+		}
+
+				break;
+		}
+	case 4: {
+		goto t;
+		break;
+	}
+	case 5: {
+		break;
+	}
+	default:
+		goto a;
+
+	}
+			break;
+	}
+	case 3: {
+		return 0;
+	}
+	default:
+		goto t;
+	}
+	}
+}
+void welcome() {
+	for (int i = 0; i <= 8; i++) {
+		for (int j = 0; j < 60; j++) {
+			cout << "|*";
+		}cout << endl;
+	} cout << "\n\n\n\t\t\t\t\t\t\tWelcome";
+	cout << " \n\t\t\t\t\t\t      to\tthe\n\t\t\t\t\t";
+	cout << "  Mobile Sim Network Management System\n\n\n";
+	for (int i = 0; i <= 8; i++) {
+		for (int j = 0; j < 60; j++) {
+			cout << "|*";
+		}cout << endl;
+	}
+}
+void complain:: getcompinfo() {
+	string a, b, c;
+	ifstream infile;
+	infile.open("complain_user_info");
+	getline(infile, a);
+	cout << "Name : " << a;
+	cout << endl;
+	getline(infile, b);
+	cout << "Mobile No : " << b;
+	cout << endl;
+	getline(infile, c);
+	cout << "CNIC : " << c;
+	cout << endl;
+}
+void complain:: getcomplain() {
+
+	string a;
+	ifstream infile;
+	infile.open("complain");
+	getline(infile, a);
+	cout << a;
+}void complain::get_comp() {
+	cout << "Name : ";
+	getline(cin, name);
+	getline(cin, name);
+	cout << "Mobile Number : ";
+	getline(cin, ph_no);
+	cout << "CNIC : ";
+	getline(cin, cnic);
+}void complain::write_complain() {
+	ofstream outfile;
+	outfile.open("complain_user_info");
+	outfile << name << endl;
+	outfile << ph_no << endl;
+	outfile << cnic << endl;
+
+	outfile.close();
+	string comp;
+	cout << "Please Write Your complain Here\n";
+
+	getline(cin, comp);
+	ofstream out;
+	out.open("complain");
+	out << comp << endl;
+	out.close();
+}
+void Packages::getpackage() {
+	string a, b;
+	ifstream infile;
+	infile.open("Packages");
+	getline(infile, a);
+	cout << "Name : " << a;
+	cout << endl;
+	getline(infile, b);
+	cout << "Mobile No : " << b;
+	cout << endl;
+
+
+
+}
+void Packages::write_packages() {
+	cout << "Name : ";
+	getline(cin, name);
+	getline(cin, name);
+	cout << "Mobile Number : ";
+	getline(cin, ph_no);
+}
+void Packages:: write_file() {
+	ofstream outfile;
+	outfile.open("Packages");
+	outfile << name << endl;
+	outfile << ph_no << endl;
+
+
+}
+void User::details() {
+	cout << "Name : ";
+	getline(cin, name);
+	getline(cin, name);
+	cout << "Father's Name  : ";
+	getline(cin, f_name);
+	cout << "CNIC : ";
+	getline(cin, cnic);
+	cout << "Address : ";
+	getline(cin, address);
+
+
+}void User::getsim() {
+	string a, b, c, d;
+	ifstream infile;
+	infile.open("new_sim");
+	getline(infile, a);
+	cout << "Name : " << a;
+	cout << endl;
+	getline(infile, b);
+	cout << "Father Name : " << b;
+	cout << endl;
+	getline(infile, c);
+	cout << "CNIC : " << c;
+	cout << endl; getline(infile, d);
+	cout << "Address : " << d;
+	cout << endl;
+
+}
+void User:: write_sim() {
+	ofstream outfile;
+	outfile.open("new_sim");
+	outfile << name << endl;
+	outfile << f_name << endl;
+	outfile << cnic << endl;
+	outfile << address << endl;
+	outfile.close();
+}
+void Admin:: get() {
+	cout << "\nUSERNAME : ";
+	cin >> user;
+	cout << "PASSWORD : ";
+	cin >> pass;
+}
+int Admin::chk(string a, string b) {
+	if (user == a && pass == b) {
+
+		return 1;
+	}
+	else {
+
+		cout << "\n Invalid Username or Password.";
+
+		return 0;
+	}
+
+}void Admin::get_sim() {
+	U.getsim();
+}
+void Admin::get_package() {
+
+	pr.getpackage();
+}
+void Admin::get_complain() {
+
+	ds.getcomplain();
+
+}
+void Admin::get_comp_info() {
+
+	ds.getcompinfo();
+
+
+}
